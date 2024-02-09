@@ -8,19 +8,6 @@ class Krontos:
 
         #Table
         self.Table = []
-    
-    def getDataset(self, file):
-        data = {}
-        with open(file, 'r') as file:
-            reader = csv.reader(file)
-            headers = next(reader)  # Read the header 
-            for header in headers:
-                data[header] = []  # empty list for header
-            for row in reader:
-                for index, value in enumerate(row):
-                    data[headers[index]].append(int(value))
-        self.Mer_Pin = data
-        return 0 #if no error.
 
     def getDataset(self, filename):
         data = {}
@@ -28,6 +15,7 @@ class Krontos:
             rows = csv.reader(file_object)
             for row in rows:
                 data[row[0]] = [int(ele) for ele in row[1:]]
+        self.Mer_Pin = data
         return 0 #if no error.
 
     def pincodeStat(self, merchant, pincode):
