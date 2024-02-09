@@ -22,6 +22,14 @@ class Krontos:
         self.Mer_Pin = data
         return 0 #if no error.
 
+    def getDataset(self, filename):
+        data = {}
+        with open(filename, "r") as file_object:
+            rows = csv.reader(file_object)
+            for row in rows:
+                data[row[0]] = [int(ele) for ele in row[1:]]
+        return 0 #if no error.
+
     def pincodeStat(self, merchant, pincode):
         #To find weather a pincode is positive.
         #Fetching from universal list and into Table.
@@ -87,7 +95,7 @@ class Krontos:
     #instance1 = Krontos()
 
     #Convert csv file to dict data format.
-    #instance1.getDataset("smaple.csv")
+    #instance1.getDataset("sample.csv")
 
     #Creating table.
     #instance1.createTable()
@@ -105,3 +113,6 @@ class Krontos:
     #    print("Available.")
     #else:
     #    print("Not Available.")
+
+
+#aimrrs
